@@ -11,7 +11,7 @@ data=[] 											  # Create a variable to hold the data
 for row in csv_file_object: # Skip through each row in the csv file,
     data.append(row[0:]) 	# adding each row to the data variable
 X = array(data) 		    # Then convert from a list to an array.
-X = [x[0].split(',') for x in X]
+X = array([x[0].split(',') for x in X])
 
 y = X[:,1].astype(int) # Save labels to y 
 

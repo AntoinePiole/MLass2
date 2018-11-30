@@ -43,5 +43,5 @@ for trainIndex, testIndex in kf:
     totalCorrect += correct
     totalInstances += testLabels.size
 print ('Total Accuracy: ' + str(totalCorrect/float(totalInstances)))
-    	
+    
     

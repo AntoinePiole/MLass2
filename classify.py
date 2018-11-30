@@ -4,6 +4,8 @@ import scipy.optimize as op
 from logisticRegressionPredict import logisticRegressionPredict 
 from logisticRegressionComputeGrad import logisticRegressionComputeGrad
 from logisticRegressionComputeCost import logisticRegressionComputeCost
+from neuralNetworkGetModel import neuralNetworkGetModel
+from neuralNetworkPredict import neuralNetworkPredict
 from kNNPredict import kNNPredict
 
 def classify(trainSet, trainLabels, testSet, method):
@@ -18,7 +20,7 @@ def classify(trainSet, trainLabels, testSet, method):
 		# Run minimize() to obtain the optimal theta
 		print('############ LOGISTIC REGRESSION ##############')
 		print('Optimizing to obtain theta')
-		Result = op.minimize(fun = logisticRegressionComputeCost, x0 = initial_theta, args = (trainSet, trainLabsel), method = 'TNC',jac = computeGrad);
+		Result = op.minimize(fun = logisticRegressionComputeCost, x0 = initial_theta, args = (trainSet, trainLabels), method = 'TNC',jac = computeGrad);
 		theta = Result.x;
 		
 		# Predict labels on test data
@@ -46,4 +48,9 @@ def classify(trainSet, trainLabels, testSet, method):
 	
 	## SVM
 
-   ## sNeural Networks
+	## sNeural Networks
+	
+	elif method == "neuralNetwork":
+		model = neuralNetworkGetModel(trainSet, trainLabels)
+		predictedLabels = neuralNetworkPredict(testSet, model)
+		return predictedLabels

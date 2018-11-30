@@ -7,7 +7,6 @@ from logisticRegressionComputeCost import logisticRegressionComputeCost
 from kNNPredict import kNNPredict
 
 def classify(trainSet, trainLabels, testSet):
-	
 	# Apply all methods 1 by 1
 	
 	## Logistic regression
@@ -44,11 +43,5 @@ def classify(trainSet, trainLabels, testSet):
 	## Decision Trees
 	
 	## SVM
-	
-	predictedLabels = zeros(testSet.shape[0])
-	
-	for i in range(testSet.shape[0]):
-		if testSet[i,3] == 'female':
-			predictedLabels[i] = 1
 
-	return predictedLabels
+   ## sNeural Networks

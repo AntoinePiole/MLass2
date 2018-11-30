@@ -1,7 +1,7 @@
 from numpy import *
 from logisticRegressionSigmoid import logisticRegressionSigmoid
 
-def computeCost(theta, X, y): 
+def logisticRegressionComputeCost(theta, X, y): 
 	# Computes the cost using theta as the parameter 
 	# for logistic regression. 
 	

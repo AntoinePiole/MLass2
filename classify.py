@@ -28,7 +28,7 @@ def classify(trainSet, trainLabels, testSet, method):
 	
 	## kNN
 
-	else if method == "kNN" :
+	elif method == "kNN" :
 		# Set k
 		# TODO : change k value
 		k=3

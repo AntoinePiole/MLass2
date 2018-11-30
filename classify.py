@@ -4,6 +4,7 @@ import scipy.optimize as op
 from logisticRegressionPredict import logisticRegressionPredict 
 from logisticRegressionComputeGrad import logisticRegressionComputeGrad
 from logisticRegressionComputeCost import logisticRegressionComputeCost
+from kNNPredict import kNNPredict
 
 def classify(trainSet, trainLabels, testSet):
 	

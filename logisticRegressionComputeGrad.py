@@ -1,5 +1,5 @@
 from numpy import *
-from sigmoid import sigmoid
+from logisticRegressionSigmoid import logisticRegressionSigmoid
 
 def computeGrad(theta, X, y):
 	# print('computeGrad called')
@@ -20,7 +20,7 @@ def computeGrad(theta, X, y):
 			z = 0
 			for k in range(n):
 				z += theta[k] * X[i][k]
-			grad[j] += ( (sigmoid(-z)) -y[i] ) * X[i][j]
+			grad[j] += ( (logisticRegressionSigmoid(-z)) -y[i] ) * X[i][j]
 		grad[j] *= -1/m
 		
 	# =============================================================

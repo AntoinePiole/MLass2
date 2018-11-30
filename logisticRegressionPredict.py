@@ -1,5 +1,5 @@
 from numpy import *
-from sigmoid import sigmoid
+from logisticRegressionSigmoid import logisticRegressionSigmoid
 
 def logisticRegressionPredict(theta, X):
 	# Predict whether the label is 0 or 1 using learned logistic 

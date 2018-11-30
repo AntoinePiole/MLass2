@@ -1,5 +1,5 @@
 from numpy import *
-from sigmoid import sigmoid
+from logisticRegressionSigmoid import logisticRegressionSigmoid
 
 def computeCost(theta, X, y): 
 	# Computes the cost using theta as the parameter 
@@ -26,7 +26,7 @@ def computeCost(theta, X, y):
 		for j in range(n):
 			z += theta[j]*X[i][j]
 		Jp += y[i]*log(sigmoid(-z))
-		Jn += (1-y[i])* log(1 - sigmoid(-z))
+		Jn += (1-y[i])* log(1 - logisticRegressionSigmoid(-z))
 	J = -1/m*(Jp+Jn)
 	# =============================================================
 	

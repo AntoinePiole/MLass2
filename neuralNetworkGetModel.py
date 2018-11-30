@@ -14,13 +14,12 @@ def neuralNetworkGetModel(Xtrain,ytrain):
     
     model = keras.Sequential([
         keras.layers.Dense(128, activation=tf.nn.relu),
-        keras.layers.Dense(128, activation=tf.nn.relu),
-        keras.layers.Dense(1)
+        keras.layers.Dense(1, activation=tf.nn.tanh)
     ])
     
     model.compile(optimizer=tf.train.AdamOptimizer(), 
                   loss='mean_squared_logarithmic_error',
                   metrics=['accuracy'])
     
-    model.fit(Xtrain, ytrain, epochs=25, verbose=0)
+    model.fit(Xtrain, ytrain, epochs=7, verbose=0)
     return model

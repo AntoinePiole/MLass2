@@ -51,6 +51,6 @@ def classify(trainSet, trainLabels, testSet, method):
 	## sNeural Networks
 	
 	elif method == "neuralNetwork":
-		model = neuralNetworkGetModel(trainSet, trainLabels)
-		predictedLabels = neuralNetworkPredict(testSet, model)
+		model, theta = neuralNetworkGetModel(trainSet, trainLabels)
+		predictedLabels = neuralNetworkPredict(testSet, model, theta)
 		return predictedLabels

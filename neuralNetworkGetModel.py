@@ -13,7 +13,9 @@ def neuralNetworkGetModel(Xtrain,ytrain):
     
     
     model = keras.Sequential([
-        keras.layers.Dense(128, activation=tf.nn.relu),
+        keras.layers.Dense(32, activation=tf.nn.relu),
+        keras.layers.Dense(32, activation=tf.nn.relu),
+        keras.layers.Dense(32, activation=tf.nn.relu),
         keras.layers.Dense(1, activation=tf.nn.tanh)
     ])
     
@@ -22,4 +24,20 @@ def neuralNetworkGetModel(Xtrain,ytrain):
                   metrics=['accuracy'])
     
     model.fit(Xtrain, ytrain, epochs=7, verbose=0)
-    return model
+    theta = optimizeTheta(model, Xtrain, ytrain, Ncoefs=20)
+    return model, theta
+
+def optimizeTheta(model, Xtrain, ytrain, Ncoefs=10):
+    coefs= np.linspace(0,0.8,Ncoefs)
+    precisions = []
+    
+    pred = model.predict(Xtrain)
+    #print(pred)
+    
+    for coef in coefs :
+        predictions = [(x>=coef) for x in pred]
+        precision = sum(([(predictions[k] == ytrain[k]) for k in range(len(predictions))]))/len(predictions)
+        precisions.append(precision)
+    print(precisions)
+    bestTheta=coefs[np.argmax(precisions)]
+    return bestTheta

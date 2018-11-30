@@ -16,7 +16,4 @@ def kNNEuclideanDistance(vectorA, vectorB):
 		
 	distance = sqrt(distance)
 	
-	#lol 
-	#mdr
-	
 	return distance

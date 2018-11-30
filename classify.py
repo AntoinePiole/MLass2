@@ -48,9 +48,9 @@ def classify(trainSet, trainLabels, testSet, method):
 	
 	## SVM
 
-   ## sNeural Networks
+	## sNeural Networks
+	
 	elif method == "neuralNetwork":
 		model = neuralNetworkGetModel(trainSet, trainLabels)
 		predictedLabels = neuralNetworkPredict(testSet, model)
 		return predictedLabels
-       

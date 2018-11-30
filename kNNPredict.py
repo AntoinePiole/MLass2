@@ -13,7 +13,7 @@ def getMajority(list):
 
     return majorityElement
 
-def kNN(k, X, labels, y):
+def kNNPredict(k, X, labels, y):
     # Assigns to the test instance the label of the majority of the labels of the k closest 
     # training examples using the kNN with euclidean distance.
     #

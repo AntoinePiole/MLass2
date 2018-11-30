@@ -32,7 +32,7 @@ for trainIndex, testIndex in kf:
     trainLabels = y[trainIndex]
     testLabels = y[testIndex]
     #Predict
-    predictedLabels = classify(trainSet, trainLabels, testSet, "logisticRegression")
+    predictedLabels = classify(trainSet, trainLabels, testSet, "neuralNetwork")
     
     correct = 0	
     for i in range(testSet.shape[0]):

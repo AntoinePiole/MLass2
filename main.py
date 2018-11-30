@@ -1,5 +1,5 @@
 from numpy import *
-from sklearn import cross_validation
+from sklearn import model_selection
 import csv as csv
 from classify import classify
 from preprocess import preprocess
@@ -21,7 +21,7 @@ X = preprocess(X) # Turn X into a "normalized" float matrix, with 0s where data 
                   # Not really normalized, as it is normalized not taking missing values into account
 
 # Initialize cross validation
-kf = cross_validation.KFold(X.shape[0], n_folds=10)
+kf = model_selection.KFold(X.shape[0], n_folds=10)
 
 totalInstances = 0 # Variable that will store the total intances that will be tested  
 totalCorrect = 0 # Variable that will store the correctly predicted intances  
@@ -34,7 +34,7 @@ for trainIndex, testIndex in kf:
     
     
     #Predict
-    predictedLabels = classify(trainSet, trainLabels, testSet, "neuralNetwork")
+    predictedLabels = classify(trainSet, trainLabels, testSet, "logisticRegression")
     
     correct = 0	
     for i in range(testSet.shape[0]):

@@ -1,6 +1,6 @@
 from numpy import *
 
-def euclideanDistance(vectorA, vectorB):
+def kNNeuclideanDistance(vectorA, vectorB):
 	# Computes the euclidean distance between two vectors. The
 	# two vectors must have the same size.
 

@@ -31,6 +31,8 @@ for trainIndex, testIndex in kf:
     testSet = X[testIndex]
     trainLabels = y[trainIndex]
     testLabels = y[testIndex]
+    
+    
     #Predict
     predictedLabels = classify(trainSet, trainLabels, testSet, "logisticRegression")
     

@@ -1,7 +1,7 @@
 from numpy import *
 from logisticRegressionSigmoid import logisticRegressionSigmoid
 
-def computeGrad(theta, X, y):
+def logisticRegressionComputeGrad(theta, X, y):
 	# print('computeGrad called')
 	# Computes the gradient of the cost with respect to
 	# the parameters.

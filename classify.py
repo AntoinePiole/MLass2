@@ -9,13 +9,17 @@ from neuralNetworkPredict import neuralNetworkPredict
 from kNNPredict import kNNPredict
 
 def classify(trainSet, trainLabels, testSet, method):
+	mTrain = trainSet.shape[0]		# number of examples in training set
+	mTest = testSet.shape[0]		# number of examples in test set
+	n = trainSet.shape[1]			# number of features
+	
 	# Apply all methods 1 by 1
 	
 	## Logistic regression
 	
 	if method == "logisticRegression" :
 		# Initialize fitting parameters
-		initial_theta = zeros((3,1))
+		initial_theta = zeros((n+1,1))
 		
 		# Run minimize() to obtain the optimal theta
 		print('############ LOGISTIC REGRESSION ##############')
@@ -24,7 +28,7 @@ def classify(trainSet, trainLabels, testSet, method):
 		theta = Result.x;
 		
 		# Predict labels on test data
-		predictedLabels = zeros(testSet.shape[0])
+		predictedLabels = zeros(mTest)
 		predictedLabels = logisticRegressionPredict(array(theta), testSet)
 		return predictedLabels
 	
@@ -36,19 +40,19 @@ def classify(trainSet, trainLabels, testSet, method):
 		k=3
 		
 		# Predict labels on test data
-		predictedLabels = zeros(testSet.shape[0])
-		for i in range(testSet.shape[0]):
-			print("    Current Test Instance: " + str(i+1), " of ", I)
+		predictedLabels = zeros(mTest)
+		for i in range(mTest):
+			#print("    Current Test Instance: " + str(i+1), " of ", I)
 			predictedLabels[i] = kNNPredict(k, trainSet, trainLabels, testSet)
 		return predictedLabels
 
 	## AdaBoost
 	
-	## Decision Trees
+	## Decision Tree
 	
 	## SVM
 
-	## sNeural Networks
+	## Neural Network
 	
 	elif method == "neuralNetwork":
 		model, theta = neuralNetworkGetModel(trainSet, trainLabels)

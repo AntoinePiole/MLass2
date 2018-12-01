@@ -33,7 +33,7 @@ def kNNPredict(k, X, labels, y):
     #
     # Note: To compute the distance betweet two vectors A and B use
     #       use the euclideanDistance(A,B) function.
-    
+    n = X.shape[1]  # number of features
     distances = []
     # Calculate the distance betweet y and each row of X
     for x in X :

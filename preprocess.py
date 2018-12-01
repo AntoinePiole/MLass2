@@ -37,28 +37,28 @@ def preprocess(X):
         if sex=='':
             newX[k,index]=-1
         else:
-            newX[k,index]=int((sex=="female")) #for females, 1 for males, -1 if no data
+            newX[k,index]=int((sex=="female"))  # 1 for females, 0 for males, -1 if no data
     index += 1
     #ages
     for k, age in enumerate(ages):
         if age=='':
             newX[k,index]=-1
         else:
-            newX[k,index]=float(age)
+            newX[k,index]=float(age)            # -1 for no data
     index += 1
     #sibs
     for k, sib in enumerate(sibs):
         if sib=='':
             newX[k,index]=-1
         else:
-            newX[k,index]=int(sib)
+            newX[k,index]=int(sib)              # -1 for no data
     index += 1
     #pachs
     for k, pach in enumerate(pachs):
         if pach=='':
             newX[k,index]=-1
         else:
-            newX[k,index]=int(pach)
+            newX[k,index]=int(pach)             # -1 for no data
     index += 1
     #tickets are skipped
     #fares
@@ -66,12 +66,12 @@ def preprocess(X):
         if fare=='':
             newX[k,index]=-1
         else:
-            newX[k,index]=float(fare)
+            newX[k,index]=float(fare)           # -1 for no data
     index += 1
     #cabins
     keys=['A', 'B', 'C', 'D', 'E', 'F', 'G', 'T']
     for k,cabin in enumerate(cabins):#we write int, then letters
-        cabin=cabin.split(' ')[-1] #Only the last cabin matters if we have many
+        cabin=cabin.split(' ')[-1] #Only the last cabin matters if we have several
         if (len(cabin)==0):
             newX[k,index]=-1
             for i, key in enumerate(keys):

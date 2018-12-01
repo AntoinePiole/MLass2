@@ -10,7 +10,7 @@ def logisticRegressionComputeGrad(theta, X, y):
 	n = X.shape[1]
 	
 	grad = zeros(size(theta)) # initialize gradient
-	
+    
 	# ====================== YOUR CODE HERE ======================
 	# Instructions: Compute the gradient of cost for each theta,
 	# as described in the assignment.
@@ -20,8 +20,8 @@ def logisticRegressionComputeGrad(theta, X, y):
 			z = 0
 			for k in range(n):
 				z += theta[k] * X[i][k]
-			grad[j] += ( (logisticRegressionSigmoid(-z)) -y[i] ) * X[i][j]
-		grad[j] *= -1/m
+			grad[j] += ( (logisticRegressionSigmoid(z)) -y[i] ) * X[i][j]
+		grad[j] *= 1/m
 		
 	# =============================================================
 	

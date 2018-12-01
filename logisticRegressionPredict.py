@@ -22,14 +22,14 @@ def logisticRegressionPredict(theta, X):
 		
 		
 	# evaluate part 1 : predict on X
-	
+	lenEval = X.shape[0]
 	c = [0 for i in range(lenEval)]
 	
 	for j in range(lenEval):
 		z = 0
 		for k in range(n):
-			z += theta[k] * Xeval[j][k]
-		if logisticRegressionSigmoid(-z)>=threshold:
+			z += theta[k] * X[j][k]
+		if logisticRegressionSigmoid(z)>=threshold:
 			c[j] = 1
 		else :
 			c[j] = 0

@@ -19,7 +19,7 @@ def classify(trainSet, trainLabels, testSet, method):
 	
 	if method == "logisticRegression" :
 		# Initialize fitting parameters
-		initial_theta = zeros((n+1,1))
+		initial_theta = zeros((n,1))
 		
 		# Run minimize() to obtain the optimal theta
 		print('############ LOGISTIC REGRESSION ##############')

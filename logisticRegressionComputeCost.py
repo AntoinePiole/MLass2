@@ -25,8 +25,8 @@ def logisticRegressionComputeCost(theta, X, y):
 		z = 0
 		for j in range(n):
 			z += theta[j]*X[i][j]
-		Jp += y[i]*log(sigmoid(-z))
-		Jn += (1-y[i])* log(1 - logisticRegressionSigmoid(-z))
+		Jp += y[i]*log(logisticRegressionSigmoid(z))
+		Jn += (1-y[i])* log(1 - logisticRegressionSigmoid(z))
 	J = -1/m*(Jp+Jn)
 	# =============================================================
 	

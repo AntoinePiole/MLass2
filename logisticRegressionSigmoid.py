@@ -8,7 +8,7 @@ def logisticRegressionSigmoid(z):
 	# ====================== YOUR CODE HERE ======================
 	# Instructions: Implement the sigmoid function as given in the
 	# assignment.
-	g = 1/(1-exp(-z))
+	g = 1/(1+exp(-z))
 
 	# =============================================================
 	return g

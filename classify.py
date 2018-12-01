@@ -43,7 +43,7 @@ def classify(trainSet, trainLabels, testSet, method):
 		predictedLabels = zeros(mTest)
 		for i in range(mTest):
 			#print("    Current Test Instance: " + str(i+1), " of ", I)
-			predictedLabels[i] = kNNPredict(k, trainSet, trainLabels, testSet)
+			predictedLabels[i] = kNNPredict(k, trainSet, trainLabels, testSet[i])
 		return predictedLabels
 
 	## AdaBoost

@@ -50,7 +50,7 @@ def classify(trainSet, trainLabels, testSet, method):
 
 	## AdaBoost
 	
-    elif method == "AdaBoost":
+    elif method == "adaBoost":
         D=10  # tree depth
         T=500  # number of trees
         

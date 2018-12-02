@@ -5,7 +5,7 @@ from classify import classify
 from preprocess import preprocess
 
 # Load data
-csv_file_object = csv.reader(open('train.csv', 'rt')) # Load in the csv fileù
+csv_file_object = csv.reader(open('train.csv', 'rt')) # Load in the csv file
 header = csv_file_object.__next__() 					  # Skip the fist line as it is a header
 data=[] 											  # Create a variable to hold the data
 
@@ -34,7 +34,7 @@ for trainIndex, testIndex in kf:
     
     
     #Predict
-    predictedLabels = classify(trainSet, trainLabels, testSet, "kNN")
+    predictedLabels = classify(trainSet, trainLabels, testSet, "AdaBoost")
     
     correct = 0	
     for i in range(testSet.shape[0]):

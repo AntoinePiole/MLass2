@@ -3,7 +3,7 @@ from sklearn import cross_validation
 import csv as csv
 from classify import classify
 from preprocess import preprocess
-
+from PCA import PCA 
 # Load data
 csv_file_object = csv.reader(open('train.csv', 'rt')) # Load in the csv fileù
 header = csv_file_object.__next__() 					  # Skip the fist line as it is a header
@@ -19,7 +19,8 @@ y = X[:,1].astype(int) # Save labels to y
 X = delete(X,1,1) # Remove survival column from matrix X
 X = preprocess(X) # Turn X into a "normalized" float matrix, with 0s where data is missing
                   # Not really normalized, as it is normalized not taking missing values into account
-
+k = 24 #reduction of the dimension space
+X = PCA(X,k)
 # Initialize cross validation
 kf = cross_validation.KFold(X.shape[0], n_folds=10)
 

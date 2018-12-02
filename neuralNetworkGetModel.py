@@ -23,7 +23,7 @@ def neuralNetworkGetModel(Xtrain,ytrain):
                   loss='categorical_hinge',
                   metrics=['accuracy'])
     
-    model.fit(Xtrain, ytrain, epochs=20, verbose=0)
+    model.fit(Xtrain, ytrain, epochs=40, verbose=0)
     #theta = optimizeTheta(model, Xtrain, ytrain, Ncoefs=5)
     theta=0
     return model, theta

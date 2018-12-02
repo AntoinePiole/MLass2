@@ -28,11 +28,11 @@ if classifier == "logisticRegression" :
     X = PCA(X, 5)
 elif classifier == "kNN" :
     X = PCA(X, 20)
-elif classifier == "adaBoost" :
-    
+#elif classifier == "adaBoost" : no PCA needed 
 elif classifier == "SVM" :
-    
+    X = PCA(X, 12)
 # elif classifier == "neuralNetwork" : no PCA needed
+    
 #print(X.shape)
 # Initialize cross validation
 kf = cross_validation.KFold(X.shape[0], n_folds=10)

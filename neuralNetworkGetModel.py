@@ -40,6 +40,5 @@ def optimizeTheta(model, Xtrain, ytrain, Ncoefs=40):
         precisions.append(precision)
         
     #Get all the indices of the maximal value. Sometimes they are all the same, so argmax isn't enough
-    print(precisions)
     bestTheta=coefs[np.argmax(precisions)]
     return bestTheta

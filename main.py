@@ -3,6 +3,7 @@ from sklearn import cross_validation
 import csv as csv
 from classify import classify
 from preprocess import preprocess
+from PCA import PCA
 
 # Load data
 csv_file_object = csv.reader(open('train.csv', 'rt')) # Load in the csv fileù
@@ -19,7 +20,10 @@ y = X[:,1].astype(int) # Save labels to y
 X = delete(X,1,1) # Remove survival column from matrix X
 X = preprocess(X) # Turn X into a "normalized" float matrix, with 0s where data is missing
                   # Not really normalized, as it is normalized not taking missing values into account
-
+# APPLYING PCA. Not very usefull with neural Networks, vital with SVMs, usefull with adaBoost
+#k = 12
+#X = PCA(X, k)
+#print(X.shape)
 # Initialize cross validation
 kf = cross_validation.KFold(X.shape[0], n_folds=10)
 
@@ -34,7 +38,7 @@ for trainIndex, testIndex in kf:
     
     
     #Predict
-    predictedLabels = classify(trainSet, trainLabels, testSet, "neuralNetwork")
+    predictedLabels = classify(trainSet, trainLabels, testSet, "adaBoost")
     
     correct = 0	
     for i in range(testSet.shape[0]):

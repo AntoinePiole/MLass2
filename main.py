@@ -34,7 +34,7 @@ for trainIndex, testIndex in kf:
     
     
     #Predict
-    predictedLabels = classify(trainSet, trainLabels, testSet, "kNN")
+    predictedLabels = classify(trainSet, trainLabels, testSet, "neuralNetwork")
     
     correct = 0	
     for i in range(testSet.shape[0]):

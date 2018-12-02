@@ -20,15 +20,16 @@ def neuralNetworkGetModel(Xtrain,ytrain):
     ])
     
     model.compile(optimizer=tf.train.AdamOptimizer(), 
-                  loss='mean_squared_error',
+                  loss='categorical_hinge',
                   metrics=['accuracy'])
     
     model.fit(Xtrain, ytrain, epochs=7, verbose=0)
-    theta = optimizeTheta(model, Xtrain, ytrain, Ncoefs=40)
+    #theta = optimizeTheta(model, Xtrain, ytrain, Ncoefs=5)
+    theta=0
     return model, theta
-
-def optimizeTheta(model, Xtrain, ytrain, Ncoefs=40):
-    coefs= np.linspace(-1,1,Ncoefs)
+'''
+def optimizeTheta(model, Xtrain, ytrain, Ncoefs=5):
+    coefs= np.linspace(-0.9,0.9,Ncoefs)
     precisions = []
     
     pred = model.predict(Xtrain)
@@ -42,3 +43,4 @@ def optimizeTheta(model, Xtrain, ytrain, Ncoefs=40):
     #Get all the indices of the maximal value. Sometimes they are all the same, so argmax isn't enough
     bestTheta=coefs[np.argmax(precisions)]
     return bestTheta
+'''

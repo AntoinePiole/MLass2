@@ -22,7 +22,7 @@ X = preprocess(X) # Turn X into a "normalized" float matrix, with 0s where data 
                   # Not really normalized, as it is normalized not taking missing values into account
 # APPLYING PCA. Not very usefull with neural Networks, vital with SVMs, usefull with adaBoost
 #k = 12
-#X = PCA(X, k)
+#X = PCA(X, 5)
 #print(X.shape)
 # Initialize cross validation
 kf = cross_validation.KFold(X.shape[0], n_folds=10)
@@ -38,7 +38,7 @@ for trainIndex, testIndex in kf:
     
     
     #Predict
-    predictedLabels = classify(trainSet, trainLabels, testSet, "adaBoost")
+    predictedLabels = classify(trainSet, trainLabels, testSet, "neuralNetwork")
     correct = 0	
     for i in range(testSet.shape[0]):
         if predictedLabels[i] == testLabels[i]:

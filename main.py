@@ -3,7 +3,8 @@ from sklearn import cross_validation
 import csv as csv
 from classify import classify
 from preprocess import preprocess
-from PCA import PCA
+
+from PCA import PCA 
 
 # Load data
 csv_file_object = csv.reader(open('train.csv', 'rt')) # Load in the csv file
@@ -21,6 +22,7 @@ X = delete(X,1,1) # Remove survival column from matrix X
 X = preprocess(X) # Turn X into a "normalized" float matrix, with 0s where data is missing
                   # Not really normalized, as it is normalized not taking missing values into account
 
+
 # Choosing classifier
 classifier = "neuralNetwork"
 
@@ -32,8 +34,6 @@ elif classifier == "kNN" :
 elif classifier == "SVM" :
     X = PCA(X, 12)
 # elif classifier == "neuralNetwork" : no PCA needed
-    
-#print(X.shape)
 # Initialize cross validation
 kf = cross_validation.KFold(X.shape[0], n_folds=10)
 
@@ -48,7 +48,9 @@ for trainIndex, testIndex in kf:
     
     
     #Predict
+
     predictedLabels = classify(trainSet, trainLabels, testSet, classifier)
+
     correct = 0	
     for i in range(testSet.shape[0]):
         if predictedLabels[i] == testLabels[i]:
@@ -60,3 +62,4 @@ for trainIndex, testIndex in kf:
 print ('Total Accuracy: ' + str(totalCorrect/float(totalInstances)))
     
     
+s

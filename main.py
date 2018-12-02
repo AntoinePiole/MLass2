@@ -76,6 +76,8 @@ for row in csv_file_object: # Skip through each row in the csv file,
     dataTest.append(row[0:]) 	# adding each row to the data variable
 Xtest = array(data) 		    # Then convert from a list to an array.
 Xtest = array([x[0].split(',') for x in Xtest])
+ids = X[:,0].astype(int) # Save ids to ids 
+
 
 Xtest = preprocess(X) # Turn X into a "normalized" float matrix, with 0s where data is missing
                   # Not really normalized, as it is normalized not taking missing values into account
@@ -92,9 +94,7 @@ with open('names.csv', 'w', newline='') as csvfile:
 
     writer.writeheader()
     for i in range(Xtest.shape[0]):
-        writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
-        writer.writerow({'first_name': 'Lovely', 'last_name': 'Spam'})
-        writer.writerow({'first_name': 'Wonderful', 'last_name': 'Spam'})
+        writer.writerow({'PassengerId' : ids[i], 'Survived' : predicteLabels[i]})
 
 
     

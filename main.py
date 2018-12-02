@@ -35,8 +35,6 @@ elif classifier == "adaBoost" :
 elif classifier == "SVM" :
     
 # elif classifier == "neuralNetwork" : no PCA needed
-    
-
 
 # Initialize cross validation
 kf = cross_validation.KFold(X.shape[0], n_folds=10)

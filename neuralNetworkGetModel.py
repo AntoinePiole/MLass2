@@ -13,9 +13,9 @@ def neuralNetworkGetModel(Xtrain,ytrain):
     
     
     model = keras.Sequential([
-        keras.layers.Dense(64, activation=tf.nn.relu),
-        keras.layers.Dense(64, activation=tf.nn.relu),
-        keras.layers.Dense(64, activation=tf.nn.relu),
+        keras.layers.Dense(50, activation=tf.nn.relu),
+        keras.layers.Dense(50, activation=tf.nn.relu),
+        keras.layers.Dense(50, activation=tf.nn.relu),
         keras.layers.Dense(1, activation=tf.nn.tanh)
     ])
     
@@ -23,7 +23,7 @@ def neuralNetworkGetModel(Xtrain,ytrain):
                   loss='categorical_hinge',
                   metrics=['accuracy'])
     
-    model.fit(Xtrain, ytrain, epochs=7, verbose=0)
+    model.fit(Xtrain, ytrain, epochs=20, verbose=0)
     #theta = optimizeTheta(model, Xtrain, ytrain, Ncoefs=5)
     theta=0
     return model, theta

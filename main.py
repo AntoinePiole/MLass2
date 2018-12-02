@@ -21,8 +21,8 @@ X = delete(X,1,1) # Remove survival column from matrix X
 X = preprocess(X) # Turn X into a "normalized" float matrix, with 0s where data is missing
                   # Not really normalized, as it is normalized not taking missing values into account
 # APPLYING PCA. Not very usefull with neural Networks, vital with SVMs, usefull with adaBoost
-#k = 12
-#X = PCA(X, 5)
+k = 5
+#X = PCA(X, k)
 #print(X.shape)
 # Initialize cross validation
 kf = cross_validation.KFold(X.shape[0], n_folds=10)

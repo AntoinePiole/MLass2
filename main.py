@@ -35,7 +35,6 @@ for trainIndex, testIndex in kf:
     
     #Predict
     predictedLabels = classify(trainSet, trainLabels, testSet, "AdaBoost")
-    
     correct = 0	
     for i in range(testSet.shape[0]):
         if predictedLabels[i] == testLabels[i]:

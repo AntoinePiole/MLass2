@@ -3,7 +3,8 @@ from sklearn import cross_validation
 import csv as csv
 from classify import classify
 from preprocess import preprocess
-from PCA import PCA
+
+from PCA import PCA 
 
 ## Load training data
 
@@ -35,9 +36,7 @@ elif classifier == "kNN" :
 elif classifier == "SVM" :
     
 # elif classifier == "neuralNetwork" : no PCA needed
-    
 
-#print(X.shape)
 
 ## Initialize cross validation
 
@@ -54,7 +53,9 @@ for trainIndex, testIndex in kf:
     
     
     #Predict
+
     predictedLabels = classify(trainSet, trainLabels, testSet, classifier)
+
     correct = 0	
     for i in range(testSet.shape[0]):
         if predictedLabels[i] == testLabels[i]:

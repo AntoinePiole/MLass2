@@ -4,10 +4,12 @@ import scipy.optimize as op
 from logisticRegressionPredict import logisticRegressionPredict 
 from logisticRegressionComputeGrad import logisticRegressionComputeGrad
 from logisticRegressionComputeCost import logisticRegressionComputeCost
-from neuralNetworkGetModel import neuralNetworkGetModel
-from neuralNetworkPredict import neuralNetworkPredict
+#from neuralNetworkGetModel import neuralNetworkGetModel
+#from neuralNetworkPredict import neuralNetworkPredict
 from kNNPredict import kNNPredict
 from DecTrees import DecisionTrees
+
+from SVM import SVM_gaussian
 
 def classify(trainSet, trainLabels, testSet, method):
     
@@ -49,7 +51,7 @@ def classify(trainSet, trainLabels, testSet, method):
         for i in range(mTest):
             #print("    Current Test Instance: " + str(i+1), " of ", I)
             predictedLabels[i] = kNNPredict(k, trainSet, trainLabels, testSet[i])
-            return predictedLabels
+        return predictedLabels
 
     ## AdaBoost with Decision Trees
 
@@ -60,11 +62,17 @@ def classify(trainSet, trainLabels, testSet, method):
         predictedLabels=DecisionTrees(trainSet,trainLabels,testSet,D,T)
         return predictedLabels
 
-    ## SV
-
-    ## Neural Network
+    ## SVM
+    elif method == "SVM":
+        C=50  #If kernel is precomputed, we can simulate different values
+        sigma=0.3
+        
+        predictedLabels=SVM_gaussian(trainSet,trainLabels,testSet,C,sigma)
+        return predictedLabels
     
+    ## Neural Network
     elif method == "neuralNetwork":
         model, theta = neuralNetworkGetModel(trainSet, trainLabels)
         predictedLabels = neuralNetworkPredict(testSet, model, theta)
         return predictedLabels
+

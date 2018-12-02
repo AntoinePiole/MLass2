@@ -44,9 +44,8 @@ Xall = np.concatenate((X,Xtest), axis=0)
 Xall = preprocess(Xall) # Turn X into a "normalized" float matrix, with 0s where data is missing
                   # Not really normalized, as it is normalized not taking missing values into account
 
-## Choosing classifier
-
-classifier = "kNN"
+# Choosing classifier
+classifier = "SVM"
 
 if classifier == "logisticRegression" :
     Xall = PCA(Xall, 5)
@@ -56,6 +55,7 @@ elif classifier == "kNN" :
 # elif classifier == "adaBoost" : no PCA needed
 elif classifier == "SVM" :
     Xall = PCA(Xall, 12)
+
 # elif classifier == "neuralNetwork" : no PCA needed
 
 X = Xall[0:891]

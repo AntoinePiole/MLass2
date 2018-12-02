@@ -60,15 +60,15 @@ def classify(trainSet, trainLabels, testSet, method):
 
     ## SVM
     elif method == "SVM":
-        C=50  #If kernel is precomputed, we can simulate different values
-        sigma=0.3
+        C=10  #If kernel is precomputed, we can simulate different values
+        sigma=1
         
         predictedLabels=SVM_gaussian(trainSet,trainLabels,testSet,C,sigma)
         return predictedLabels
     
     ## Neural Network
-    elif method == "neuralNetwork":
-        model, theta = neuralNetworkGetModel(trainSet, trainLabels)
-        predictedLabels = neuralNetworkPredict(testSet, model, theta)
-        return predictedLabels
+#    elif method == "neuralNetwork":
+#        model, theta = neuralNetworkGetModel(trainSet, trainLabels)
+#        predictedLabels = neuralNetworkPredict(testSet, model, theta)
+#        return predictedLabels
 

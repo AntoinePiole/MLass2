@@ -38,6 +38,10 @@ for trainIndex, testIndex in kf:
     
     
     #Predict
+    #predictedLabels = classify(trainSet, trainLabels, testSet, "logisticRegression")
+    #predictedLabels = classify(trainSet, trainLabels, testSet, "kNN")
+    #predictedLabels = classify(trainSet, trainLabels, testSet, "adaBoost")
+    #predictedLabels = classify(trainSet, trainLabels, testSet, "SVM")
     predictedLabels = classify(trainSet, trainLabels, testSet, "neuralNetwork")
     correct = 0	
     for i in range(testSet.shape[0]):

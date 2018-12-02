@@ -14,53 +14,52 @@ def classify(trainSet, trainLabels, testSet, method):
     mTrain = trainSet.shape[0]		# number of examples in training set
     mTest = testSet.shape[0]		# number of examples in test set
     n = trainSet.shape[1]			# number of features
-	
+
     # Apply all methods 1 by 1
-	
+
     ## Logistic regression
-	
+
     if method == "logisticRegression" :
         # Initialize fitting parameters
         initial_theta = zeros((n,1))
-		
+
         # Run minimize() to obtain the optimal theta
         print('############ LOGISTIC REGRESSION ##############')
         print('Optimizing to obtain theta')
         Result = op.minimize(fun = logisticRegressionComputeCost, x0 = initial_theta, args = (trainSet, trainLabels), method = 'TNC',jac = logisticRegressionComputeGrad);
         theta = Result.x;
-		
+
         # Predict labels on test data
         predictedLabels = zeros(mTest)
         predictedLabels = logisticRegressionPredict(array(theta), testSet)
         return predictedLabels
-	
-	## kNN
+
+    ## kNN
 
     elif method == "kNN":
         # Set k
-        # TODO : change k value
-        k=3
-		
+        k = np.floor(np.sqrt(mTrain))
+
         # Predict labels on test data
         predictedLabels = zeros(mTest)
         for i in range(mTest):
-			#print("    Current Test Instance: " + str(i+1), " of ", I)
+            #print("    Current Test Instance: " + str(i+1), " of ", I)
             predictedLabels[i] = kNNPredict(k, trainSet, trainLabels, testSet[i])
             return predictedLabels
 
-	## AdaBoost
-	
+    ## AdaBoost
+
     elif method == "adaBoost":
         D=10  # tree depth
         T=500  # number of trees
         
         predictedLabels=DecisionTrees(trainSet,trainLabels,testSet,D,T)
         return predictedLabels
-	
-	## SVM
 
-	## Neural Network
-	
+    ## SVM
+
+    ## Neural Network
+    
     elif method == "neuralNetwork":
         model, theta = neuralNetworkGetModel(trainSet, trainLabels)
         predictedLabels = neuralNetworkPredict(testSet, model, theta)

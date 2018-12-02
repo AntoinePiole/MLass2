@@ -23,14 +23,16 @@ def preprocess(X):
     index += 1
     #ignore name
     #title
-    ranks=np.unique(([((title.split('.'))[0])[1:] for title in titles]))
+    ranks  = np.unique(([((title.split('.'))[0])[1:] for title in titles]))
     for (k,title) in enumerate(titles) :
         title=((title.split('.'))[0])[1:]
         for (i,rank) in enumerate(ranks) :
             if rank==title: #0 if no, 1 if yes, -1 if missing data
                 newX[k,index+i]=1        
-            if title=='':
+            elif title=='':
                 newX[k,index+i]=-1
+            else:
+                newX[k,index+i]=0
     index+=len(ranks)
     #sexes
     for k, sex in enumerate(sexes):
@@ -88,6 +90,7 @@ def preprocess(X):
                     newX[k,index+1+i]=1 #Goes up to 33
     index += len(keys)
     #embarked
+    
     ports=np.unique(embarkeds)
     for k, embarkment in enumerate(embarkeds):
         for (i,port) in enumerate(ports) :
@@ -105,6 +108,8 @@ def preprocess(X):
         nonEmpty = column[column != -1]
         mean = np.mean(nonEmpty)
         std = np.std(nonEmpty)
+        if (std==0):
+            std=1
         column[column == -1] = mean
         newX[:,i] = (column - mean)/std
     return newX

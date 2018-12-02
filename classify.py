@@ -40,16 +40,12 @@ def classify(trainSet, trainLabels, testSet, method):
 
     elif method == "kNN":
         # Set k
-        k = np.floor(np.sqrt(mTrain))
-        
-        # Applying PCA
-        trainSet = PCA(trainSet, PCAlvl)
-        trainSet = PCA(trainSet, PCAlvl)
+        k = floor(sqrt(mTrain))
 
         # Predict labels on test data
         predictedLabels = zeros(mTest)
         for i in range(mTest):
-            #print("    Current Test Instance: " + str(i+1), " of ", I)
+            print("    Current Test Instance sizes : ", trainSet.shape, testSet[i].shape)
             predictedLabels[i] = kNNPredict(k, trainSet, trainLabels, testSet[i])
         return predictedLabels
 

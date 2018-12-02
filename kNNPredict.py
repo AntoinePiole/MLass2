@@ -35,7 +35,7 @@ def kNNPredict(k, X, labels, y):
     #       use the euclideanDistance(A,B) function.
     n = X.shape[1]  # number of features
     distances = []
-    # Calculate the distance betweet y and each row of X
+    # Calculate the distance between y and each row of X
     for x in X :
         distances.append(kNNEuclideanDistance(x,y))
     # Find the k closest observations

@@ -32,9 +32,8 @@ if classifier == "logisticRegression" :
 elif classifier == "kNN" :
     X = PCA(X, 20)
 # elif classifier == "adaBoost" : no PCA needed
-    
 elif classifier == "SVM" :
-    
+    X = PCA(X, 12)
 # elif classifier == "neuralNetwork" : no PCA needed
 
 

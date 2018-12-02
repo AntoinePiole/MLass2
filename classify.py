@@ -51,7 +51,7 @@ def classify(trainSet, trainLabels, testSet, method):
             predictedLabels[i] = kNNPredict(k, trainSet, trainLabels, testSet[i])
             return predictedLabels
 
-    ## AdaBoost
+    ## AdaBoost with Decision Trees
 
     elif method == "adaBoost":
         D=10  # tree depth
@@ -60,7 +60,7 @@ def classify(trainSet, trainLabels, testSet, method):
         predictedLabels=DecisionTrees(trainSet,trainLabels,testSet,D,T)
         return predictedLabels
 
-    ## SVM
+    ## SV
 
     ## Neural Network
     

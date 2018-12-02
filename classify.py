@@ -39,6 +39,10 @@ def classify(trainSet, trainLabels, testSet, method):
     elif method == "kNN":
         # Set k
         k = np.floor(np.sqrt(mTrain))
+        
+        # Applying PCA
+        trainSet = PCA(trainSet, PCAlvl)
+        trainSet = PCA(trainSet, PCAlvl)
 
         # Predict labels on test data
         predictedLabels = zeros(mTest)

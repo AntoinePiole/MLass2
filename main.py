@@ -20,9 +20,21 @@ y = X[:,1].astype(int) # Save labels to y
 X = delete(X,1,1) # Remove survival column from matrix X
 X = preprocess(X) # Turn X into a "normalized" float matrix, with 0s where data is missing
                   # Not really normalized, as it is normalized not taking missing values into account
-# APPLYING PCA. Not very usefull with neural Networks, vital with SVMs, usefull with adaBoost
-#k = 12
-#X = PCA(X, 5)
+
+# Choosing classifier
+classifier = "neuralNetwork"
+
+if classifier == "logisticRegression" :
+    X = PCA(X, 5)
+elif classifier == "kNN" :
+    X = PCA(X, 20)
+elif classifier == "adaBoost" :
+    
+elif classifier == "SVM" :
+    
+# elif classifier == "neuralNetwork" : no PCA needed
+    
+
 #print(X.shape)
 # Initialize cross validation
 kf = cross_validation.KFold(X.shape[0], n_folds=10)
@@ -38,11 +50,7 @@ for trainIndex, testIndex in kf:
     
     
     #Predict
-    #predictedLabels = classify(trainSet, trainLabels, testSet, "logisticRegression")
-    #predictedLabels = classify(trainSet, trainLabels, testSet, "kNN")
-    #predictedLabels = classify(trainSet, trainLabels, testSet, "adaBoost")
-    #predictedLabels = classify(trainSet, trainLabels, testSet, "SVM")
-    predictedLabels = classify(trainSet, trainLabels, testSet, "neuralNetwork")
+    predictedLabels = classify(trainSet, trainLabels, testSet, classifier)
     correct = 0	
     for i in range(testSet.shape[0]):
         if predictedLabels[i] == testLabels[i]:

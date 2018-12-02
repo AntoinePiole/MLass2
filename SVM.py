@@ -1,6 +1,6 @@
 import numpy as np
 from sklearn.svm import SVC
-
+from math import sqrt
 
 def gaussianKernel(X1, X2, sigma = 0.1):
     
@@ -12,8 +12,11 @@ def gaussianKernel(X1, X2, sigma = 0.1):
     
     return K
 
-def SVM_gaussian(X1,y1,X2,C,sigma):
-    svc = SVC()  #if nothing, use Radial basis function kernel, sigma=1
+def SVM_gaussian(X1,y1,X2,C2,sigma):
+    
+    coef=sqrt(2)*sigma
+    X1,X2=X1/coef,X2/coef
+    svc = SVC(C=C2)  #if nothing, use Radial basis function kernel, sigma=1
     svc.fit(X1,y1)
     return svc.predict(X2)
 

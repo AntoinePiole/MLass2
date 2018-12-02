@@ -24,16 +24,16 @@ X = preprocess(X) # Turn X into a "normalized" float matrix, with 0s where data 
 
 
 # Choosing classifier
-classifier = "neuralNetwork"
+classifier = "SVM"
 
 if classifier == "logisticRegression" :
     X = PCA(X, 5)
 elif classifier == "kNN" :
     X = PCA(X, 20)
 elif classifier == "adaBoost" :
-    
+    X=X
 elif classifier == "SVM" :
-    
+    X=X
 # elif classifier == "neuralNetwork" : no PCA needed
 
 # Initialize cross validation

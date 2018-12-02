@@ -4,8 +4,8 @@ import scipy.optimize as op
 from logisticRegressionPredict import logisticRegressionPredict 
 from logisticRegressionComputeGrad import logisticRegressionComputeGrad
 from logisticRegressionComputeCost import logisticRegressionComputeCost
-#from neuralNetworkGetModel import neuralNetworkGetModel
-#from neuralNetworkPredict import neuralNetworkPredict
+from neuralNetworkGetModel import neuralNetworkGetModel
+from neuralNetworkPredict import neuralNetworkPredict
 from kNNPredict import kNNPredict
 from DecTrees import DecisionTrees
 
@@ -61,7 +61,7 @@ def classify(trainSet, trainLabels, testSet, method):
 
 	## Neural Network
 	
-    #elif method == "neuralNetwork":
-        #model, theta = neuralNetworkGetModel(trainSet, trainLabels)
-        #predictedLabels = neuralNetworkPredict(testSet, model, theta)
-        #return predictedLabels
+    elif method == "neuralNetwork":
+        model, theta = neuralNetworkGetModel(trainSet, trainLabels)
+        predictedLabels = neuralNetworkPredict(testSet, model, theta)
+        return predictedLabels
